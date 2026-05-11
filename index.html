@@ -25,90 +25,112 @@
   --amber: #92400e;
   --amber-light: #fef3c7;
   --amber-text: #78350f;
+  --red: #9b1c1c;
+  --red-light: #fef2f2;
   --radius: 10px;
   --radius-sm: 6px;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; min-height: 100vh; }
 
-/* Header */
 header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 50; }
 .logo { font-size: 15px; font-weight: 500; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; }
 .logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
 .header-meta { font-size: 12px; color: var(--muted); display: flex; gap: 1.5rem; align-items: center; }
 .header-badge { background: var(--amber-light); color: var(--amber); font-size: 11px; padding: 3px 10px; border-radius: 99px; font-weight: 500; }
 
-/* Layout */
 .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
 
-/* Metrics row */
 .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 1.5rem; }
 .metric { background: var(--surface); padding: 1.25rem 1.5rem; }
 .metric-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
 .metric-value { font-size: 22px; font-weight: 500; letter-spacing: -0.03em; font-family: 'DM Mono', monospace; }
 .metric-sub { font-size: 11px; color: var(--hint); margin-top: 3px; }
 
-/* Tabs */
 .tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 1.5rem; }
 .tab { font-size: 13px; padding: 8px 16px; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all .15s; }
 .tab:hover { color: var(--text); }
 .tab.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 500; }
 
-/* Controls */
 .controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 1rem; }
 .controls label { font-size: 12px; color: var(--muted); }
-select, input[type=text], input[type=number] {
+select, input[type=text], input[type=number], input[type=url], textarea {
   font-family: 'DM Sans', sans-serif; font-size: 13px; padding: 7px 12px;
   border: 1px solid var(--border); border-radius: var(--radius-sm);
-  background: var(--surface); color: var(--text); outline: none;
-  transition: border-color .15s;
+  background: var(--surface); color: var(--text); outline: none; transition: border-color .15s;
 }
-select:focus, input:focus { border-color: var(--accent); }
+select:focus, input:focus, textarea:focus { border-color: var(--accent); }
+textarea { resize: vertical; min-height: 72px; line-height: 1.5; }
 
-/* Buttons */
 .btn { font-family: 'DM Sans', sans-serif; font-size: 13px; padding: 7px 14px; border-radius: var(--radius-sm); cursor: pointer; transition: all .15s; border: 1px solid var(--border); background: var(--surface); color: var(--text); display: inline-flex; align-items: center; gap: 6px; }
 .btn:hover { background: var(--surface2); }
 .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
 .btn-primary:hover { background: #2a4a7a; }
-.btn-danger { color: #c0392b; border-color: #f5c6c6; }
-.btn-danger:hover { background: #fef2f2; }
+.btn-danger { color: var(--red); border-color: #f5c6c6; }
+.btn-danger:hover { background: var(--red-light); }
+.btn-sm { padding: 4px 10px; font-size: 11px; }
 
-/* Table */
 .table-wrap { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
 table { width: 100%; border-collapse: collapse; font-size: 13px; }
 thead th { background: var(--surface2); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 500; padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; cursor: pointer; user-select: none; }
 thead th:hover { color: var(--text); }
-tbody td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; color: var(--text); }
+tbody td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
 tbody tr:last-child td { border-bottom: none; }
 tbody tr:hover td { background: var(--surface2); cursor: pointer; }
 tbody tr.best-row td { background: var(--green-light); }
 tbody tr.best-row:hover td { background: #d4eddd; }
 .mono { font-family: 'DM Mono', monospace; }
 
-/* Badges */
 .badge { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 99px; font-weight: 500; letter-spacing: .02em; }
 .badge-fixed { background: var(--accent-light); color: var(--accent-text); }
 .badge-variable { background: var(--amber-light); color: var(--amber-text); }
 .badge-best { background: var(--green-light); color: var(--green-text); }
 .badge-quoted { background: var(--surface2); color: var(--muted); }
-.badge-applied { background: #fef3c7; color: #92400e; }
+.badge-applied { background: var(--amber-light); color: var(--amber-text); }
 .badge-approved { background: var(--green-light); color: var(--green-text); }
 
 /* Detail panel */
-.detail-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; }
-.detail-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+.detail-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.detail-header { display: flex; justify-content: space-between; align-items: flex-start; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); }
 .detail-lender { font-size: 20px; font-weight: 500; letter-spacing: -0.02em; }
 .detail-broker { font-size: 12px; color: var(--muted); margin-top: 2px; }
-.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 3rem; }
-.detail-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); }
+.detail-body { display: grid; grid-template-columns: 1fr 1fr; }
+.detail-col { padding: 1.25rem 1.5rem; }
+.detail-col:first-child { border-right: 1px solid var(--border); }
+.detail-col-title { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 500; margin-bottom: .75rem; }
+.detail-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--border); }
 .detail-row:last-child { border-bottom: none; }
 .detail-key { color: var(--muted); font-size: 12px; }
 .detail-val { font-weight: 500; font-size: 13px; font-family: 'DM Mono', monospace; }
-.detail-notes { margin-top: 1rem; padding: 10px 14px; background: var(--surface2); border-radius: var(--radius-sm); font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* Notes log */
+.notes-section { border-top: 1px solid var(--border); padding: 1.25rem 1.5rem; }
+.notes-title { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 500; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; }
+.note-entry { background: var(--surface2); border-radius: var(--radius-sm); padding: 10px 12px; margin-bottom: 8px; position: relative; }
+.note-date { font-size: 11px; color: var(--hint); font-family: 'DM Mono', monospace; margin-bottom: 4px; }
+.note-text { font-size: 13px; line-height: 1.55; color: var(--text); }
+.note-delete { position: absolute; top: 8px; right: 8px; background: none; border: none; cursor: pointer; color: var(--hint); font-size: 14px; padding: 2px 6px; border-radius: 4px; }
+.note-delete:hover { background: var(--border); color: var(--red); }
+.note-input-row { display: flex; gap: 8px; margin-top: .75rem; }
+.note-input-row textarea { flex: 1; min-height: 56px; }
+.empty-notes { color: var(--hint); font-size: 12px; font-style: italic; padding: 4px 0 8px; }
+
+/* Documents section */
+.docs-section { border-top: 1px solid var(--border); padding: 1.25rem 1.5rem; }
+.doc-entry { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.doc-entry:last-of-type { border-bottom: none; }
+.doc-info { display: flex; flex-direction: column; gap: 2px; }
+.doc-name { font-size: 13px; font-weight: 500; }
+.doc-meta { font-size: 11px; color: var(--hint); font-family: 'DM Mono', monospace; }
+.doc-actions { display: flex; gap: 6px; align-items: center; }
+.doc-link { font-size: 12px; color: var(--accent); text-decoration: none; }
+.doc-link:hover { text-decoration: underline; }
+.doc-add-row { display: grid; grid-template-columns: 1fr 1.5fr auto; gap: 8px; margin-top: .75rem; align-items: start; }
+.doc-add-row input { width: 100%; }
 
 /* Simulator */
 .sim-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; }
-.sim-card h3 { font-size: 13px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 1rem; }
+.sim-card h3 { font-size: 11px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 1rem; }
 .sim-row { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
 .sim-row label { font-size: 12px; color: var(--muted); min-width: 150px; }
 input[type=range] { flex: 1; accent-color: var(--accent); cursor: pointer; }
@@ -125,37 +147,32 @@ input[type=range] { flex: 1; accent-color: var(--accent); cursor: pointer; }
 /* Modal */
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; align-items: center; justify-content: center; }
 .modal-overlay.open { display: flex; }
-.modal { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); padding: 1.5rem; width: 95%; max-width: 520px; max-height: 90vh; overflow-y: auto; }
+.modal { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); padding: 1.5rem; width: 95%; max-width: 540px; max-height: 90vh; overflow-y: auto; }
 .modal-title { font-size: 16px; font-weight: 500; margin-bottom: 1.25rem; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .form-group { display: flex; flex-direction: column; gap: 5px; }
 .form-group.full { grid-column: span 2; }
 .form-group label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
-.form-group input, .form-group select { width: 100%; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; }
 .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+.form-section-title { grid-column: span 2; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 500; padding-top: 4px; border-top: 1px solid var(--border); margin-top: 4px; }
 
-/* Section visibility */
 .section { display: none; }
 .section.active { display: block; }
-
-/* Sort indicator */
 .sort-indicator { font-size: 10px; margin-left: 4px; }
-
-/* Empty state */
 .empty { text-align: center; padding: 3rem; color: var(--hint); font-size: 13px; }
 
-/* Footer */
 footer { border-top: 1px solid var(--border); padding: 1rem 2rem; font-size: 11px; color: var(--hint); display: flex; justify-content: space-between; margin-top: 2rem; }
-
-/* Toast */
-.toast { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); background: var(--text); color: var(--bg); padding: 10px 20px; border-radius: 99px; font-size: 13px; opacity: 0; transition: opacity .3s; z-index: 300; pointer-events: none; }
+.toast { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); background: var(--text); color: var(--bg); padding: 10px 20px; border-radius: 99px; font-size: 13px; opacity: 0; transition: opacity .3s; z-index: 300; pointer-events: none; white-space: nowrap; }
 .toast.show { opacity: 1; }
 
 @media (max-width: 640px) {
   .container { padding: 1rem; }
   .form-grid { grid-template-columns: 1fr; }
-  .form-group.full { grid-column: span 1; }
-  .detail-grid { grid-template-columns: 1fr; }
+  .form-group.full, .form-section-title { grid-column: span 1; }
+  .detail-body { grid-template-columns: 1fr; }
+  .detail-col:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+  .doc-add-row { grid-template-columns: 1fr; }
   header { padding: 0 1rem; }
   .header-meta { display: none; }
 }
@@ -164,10 +181,7 @@ footer { border-top: 1px solid var(--border); padding: 1rem 2rem; font-size: 11p
 <body>
 
 <header>
-  <div class="logo">
-    <div class="logo-dot"></div>
-    Remortgage Tracker
-  </div>
+  <div class="logo"><div class="logo-dot"></div>Remortgage Tracker</div>
   <div class="header-meta">
     <span>Property: £750,000</span>
     <span>Loan: £393,604 · 18 yrs</span>
@@ -176,7 +190,6 @@ footer { border-top: 1px solid var(--border); padding: 1rem 2rem; font-size: 11p
 </header>
 
 <div class="container">
-
   <div class="metrics" id="metrics-bar"></div>
 
   <div class="tabs">
@@ -185,7 +198,7 @@ footer { border-top: 1px solid var(--border); padding: 1rem 2rem; font-size: 11p
     <div class="tab" onclick="showTab('detail')">Quote detail</div>
   </div>
 
-  <!-- Compare Tab -->
+  <!-- Compare -->
   <div id="tab-compare" class="section active">
     <div class="controls">
       <label>Sort</label>
@@ -209,9 +222,8 @@ footer { border-top: 1px solid var(--border); padding: 1rem 2rem; font-size: 11p
         <option value="Approved">Approved</option>
       </select>
       <button class="btn" onclick="openModal()">+ Add quote</button>
-      <button class="btn" onclick="exportCSV()" title="Export to CSV">↓ Export</button>
+      <button class="btn" onclick="exportCSV()">↓ Export</button>
     </div>
-
     <div class="table-wrap">
       <table>
         <thead>
@@ -233,7 +245,7 @@ footer { border-top: 1px solid var(--border); padding: 1rem 2rem; font-size: 11p
     </div>
   </div>
 
-  <!-- Simulate Tab -->
+  <!-- Simulate -->
   <div id="tab-simulate" class="section">
     <div class="sim-card">
       <h3>Adjust parameters</h3>
@@ -254,16 +266,15 @@ footer { border-top: 1px solid var(--border); padding: 1rem 2rem; font-size: 11p
       </div>
       <div class="sim-outputs" id="sim-outputs"></div>
     </div>
-
     <div class="sim-card">
       <h3>Rate sensitivity — monthly repayment</h3>
       <div class="chart-wrap">
-        <canvas id="sensitivityChart" role="img" aria-label="Line chart showing monthly repayment sensitivity to interest rate changes for each lender quote">Monthly repayment changes with interest rates across lenders.</canvas>
+        <canvas id="sensitivityChart" role="img" aria-label="Line chart showing monthly repayment sensitivity to rate changes">Monthly repayment across interest rates.</canvas>
       </div>
     </div>
   </div>
 
-  <!-- Detail Tab -->
+  <!-- Detail -->
   <div id="tab-detail" class="section">
     <div class="controls" style="margin-bottom:1rem;">
       <label>Select quote</label>
@@ -271,7 +282,6 @@ footer { border-top: 1px solid var(--border); padding: 1rem 2rem; font-size: 11p
     </div>
     <div id="detail-content"></div>
   </div>
-
 </div>
 
 <footer>
@@ -284,7 +294,8 @@ footer { border-top: 1px solid var(--border); padding: 1rem 2rem; font-size: 11p
   <div class="modal">
     <div class="modal-title" id="modal-title">Add mortgage quote</div>
     <div class="form-grid">
-      <div class="form-group"><label>Broker</label><input id="f-broker" placeholder="e.g. L&C, Habito, Trussle"></div>
+      <div class="form-section-title">Quote details</div>
+      <div class="form-group"><label>Broker</label><input id="f-broker" placeholder="e.g. L&C, Habito"></div>
       <div class="form-group"><label>Lender</label><input id="f-lender" placeholder="e.g. NatWest, HSBC"></div>
       <div class="form-group"><label>Rate type</label>
         <select id="f-type"><option value="fixed">Fixed</option><option value="variable">Variable</option></select>
@@ -292,6 +303,7 @@ footer { border-top: 1px solid var(--border); padding: 1rem 2rem; font-size: 11p
       <div class="form-group"><label>Interest rate (%)</label><input id="f-rate" type="number" step="0.01" placeholder="4.50"></div>
       <div class="form-group"><label>Monthly payment (£)</label><input id="f-monthly" type="number" placeholder="2600"></div>
       <div class="form-group"><label>Deal period (months)</label><input id="f-period" type="number" placeholder="24"></div>
+      <div class="form-section-title">Fees</div>
       <div class="form-group"><label>Lender fee (£)</label><input id="f-fee" type="number" placeholder="999"></div>
       <div class="form-group"><label>Valuation fee (£)</label><input id="f-val" type="number" placeholder="0"></div>
       <div class="form-group"><label>Transfer fee (£)</label><input id="f-transfer" type="number" placeholder="0"></div>
@@ -302,9 +314,9 @@ footer { border-top: 1px solid var(--border); padding: 1rem 2rem; font-size: 11p
       <div class="form-group"><label>Status</label>
         <select id="f-status"><option>Quoted</option><option>Applied</option><option>Approved</option></select>
       </div>
+      <div class="form-section-title">Borrowing</div>
       <div class="form-group"><label>Extra borrowing (£)</label><input id="f-extra" type="number" placeholder="0"></div>
       <div class="form-group"><label>Purpose</label><input id="f-purpose" placeholder="e.g. Home improvement"></div>
-      <div class="form-group full"><label>Notes</label><input id="f-notes" placeholder="Any additional notes..."></div>
     </div>
     <div class="modal-actions">
       <button class="btn" onclick="closeModal()">Cancel</button>
@@ -316,194 +328,365 @@ footer { border-top: 1px solid var(--border); padding: 1rem 2rem; font-size: 11p
 <div class="toast" id="toast"></div>
 
 <script>
-const STORAGE_KEY = 'remortgage_tracker_v1';
+const STORAGE_KEY = 'remortgage_tracker_v2';
 
 const DEFAULT_QUOTES = [
   {
-    id: 1, broker: 'Habito (Monzo)', lender: 'Barclays', type: 'variable',
-    rate: 4.01, monthly: 2567.73, fee: 999, valuation: 0, period: 24,
-    transferFee: 35, finalCharge: 80, legals: 'Fees-assisted',
-    extraBorrowing: 75000, purpose: 'Home improvement',
-    notes: 'Best 2yr variable deal. Rate can change as it tracks base rate.',
-    status: 'Quoted', dateAdded: '2026-05-05'
+    id:1, broker:'Habito (Monzo)', lender:'Barclays', type:'variable',
+    rate:4.01, monthly:2567.73, fee:999, valuation:0, period:24,
+    transferFee:35, finalCharge:80, legals:'Fees-assisted',
+    extraBorrowing:75000, purpose:'Home improvement',
+    status:'Quoted', dateAdded:'2026-05-05',
+    notes:[{id:'n1', date:'2026-05-05', text:'Best 2yr variable deal from Habito (Monzo). Rate can change as it tracks base rate. Broker recommends locking a rate with new lender ASAP given market volatility.'}],
+    docs:[]
   },
   {
-    id: 2, broker: 'Habito (Monzo)', lender: 'HSBC', type: 'fixed',
-    rate: 4.73, monthly: 2716.99, fee: 999, valuation: 0, period: 27,
-    transferFee: 0, finalCharge: 0, legals: 'Fees-assisted',
-    extraBorrowing: 75000, purpose: 'Home improvement',
-    notes: 'Best 2yr fixed rate. Locked for 27 months from completion.',
-    status: 'Quoted', dateAdded: '2026-05-05'
+    id:2, broker:'Habito (Monzo)', lender:'HSBC', type:'fixed',
+    rate:4.73, monthly:2716.99, fee:999, valuation:0, period:27,
+    transferFee:0, finalCharge:0, legals:'Fees-assisted',
+    extraBorrowing:75000, purpose:'Home improvement',
+    status:'Quoted', dateAdded:'2026-05-05',
+    notes:[{id:'n2', date:'2026-05-05', text:'Best 2yr fixed rate. Locked for 27 months from completion. ESIS document received — see docs.'}],
+    docs:[{id:'d1', name:'ESIS — HSBC 2yr Fixed Standard REMO', date:'2026-05-05', url:''}]
   }
 ];
 
-let quotes = loadQuotes();
-let nextId = quotes.length ? Math.max(...quotes.map(q => q.id)) + 1 : 3;
+let data = loadData();
+let nextId = data.quotes.length ? Math.max(...data.quotes.map(q=>q.id))+1 : 3;
 let editingId = null;
 let sortKey = 'monthly';
 let sortDir = 1;
 let simChart = null;
 
-function loadQuotes() {
+function loadData() {
   try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) : [...DEFAULT_QUOTES];
-  } catch { return [...DEFAULT_QUOTES]; }
+    const s = localStorage.getItem(STORAGE_KEY);
+    return s ? JSON.parse(s) : { quotes: JSON.parse(JSON.stringify(DEFAULT_QUOTES)) };
+  } catch { return { quotes: JSON.parse(JSON.stringify(DEFAULT_QUOTES)) }; }
 }
 
-function saveQuotes() {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(quotes)); } catch {}
+function save() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch {}
 }
 
 function calcTotal2yr(q) {
-  return q.monthly * 24 + (q.fee||0) + (q.valuation||0) + (q.transferFee||0) + (q.finalCharge||0);
+  return q.monthly*24 + (q.fee||0) + (q.valuation||0) + (q.transferFee||0) + (q.finalCharge||0);
 }
 
 function calcMonthly(principal, annualRate, years) {
-  const r = (annualRate / 100) / 12;
-  const n = years * 12;
-  if (r <= 0) return principal / n;
-  return principal * r * Math.pow(1+r,n) / (Math.pow(1+r,n)-1);
+  const r = (annualRate/100)/12, n = years*12;
+  if (r<=0) return principal/n;
+  return principal*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
 }
 
-function fmt(n, dp=0) {
-  return '£' + Number(n).toLocaleString('en-GB', {minimumFractionDigits: dp, maximumFractionDigits: dp});
-}
-
-function fmtPct(n) { return n.toFixed(2) + '%'; }
+function fmt(n, dp=0) { return '£'+Number(n).toLocaleString('en-GB',{minimumFractionDigits:dp,maximumFractionDigits:dp}); }
+function today() { return new Date().toISOString().split('T')[0]; }
+function fmtDate(d) { return new Date(d).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); }
+function uid() { return Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
 
 function getFiltered() {
   const type = document.getElementById('filter-type').value;
   const status = document.getElementById('filter-status').value;
-  return quotes.filter(q =>
-    (type === 'all' || q.type === type) &&
-    (status === 'all' || q.status === status)
-  );
+  return data.quotes.filter(q => (type==='all'||q.type===type) && (status==='all'||q.status===status));
 }
 
 function setSort(key) {
-  if (sortKey === key) sortDir *= -1;
-  else { sortKey = key; sortDir = 1; }
+  if (sortKey===key) sortDir*=-1; else { sortKey=key; sortDir=1; }
   renderTable();
 }
 
 function renderMetrics() {
-  const all = quotes;
-  if (!all.length) { document.getElementById('metrics-bar').innerHTML = ''; return; }
-  const best = all.reduce((a,b) => a.monthly < b.monthly ? a : b);
-  const lowestRate = all.reduce((a,b) => a.rate < b.rate ? a : b);
-  const maxMonthly = Math.max(...all.map(q=>q.monthly));
-  const saving = all.length > 1 ? maxMonthly - best.monthly : null;
+  const all = data.quotes;
+  if (!all.length) { document.getElementById('metrics-bar').innerHTML=''; return; }
+  const best = all.reduce((a,b)=>a.monthly<b.monthly?a:b);
+  const lowestRate = all.reduce((a,b)=>a.rate<b.rate?a:b);
+  const saving = all.length>1 ? Math.max(...all.map(q=>q.monthly))-best.monthly : null;
   const brokers = new Set(all.map(q=>q.broker)).size;
-
   document.getElementById('metrics-bar').innerHTML = `
     <div class="metric"><div class="metric-label">Total quotes</div><div class="metric-value">${all.length}</div><div class="metric-sub">${brokers} broker${brokers!==1?'s':''}</div></div>
-    <div class="metric"><div class="metric-label">Lowest monthly</div><div class="metric-value">${fmt(best.monthly,0)}</div><div class="metric-sub">${best.lender} · ${best.type}</div></div>
+    <div class="metric"><div class="metric-label">Lowest monthly</div><div class="metric-value">${fmt(best.monthly)}</div><div class="metric-sub">${best.lender} · ${best.type}</div></div>
     <div class="metric"><div class="metric-label">Lowest rate</div><div class="metric-value">${lowestRate.rate}%</div><div class="metric-sub">${lowestRate.lender}</div></div>
-    ${saving !== null ? `<div class="metric"><div class="metric-label">Best vs worst</div><div class="metric-value">${fmt(saving,0)}/mo</div><div class="metric-sub">monthly saving</div></div>` : ''}
-    <div class="metric"><div class="metric-label">Best 2yr total</div><div class="metric-value">${fmt(Math.min(...all.map(q=>calcTotal2yr(q))),0)}</div><div class="metric-sub">inc all fees</div></div>
+    ${saving!==null?`<div class="metric"><div class="metric-label">Best vs worst</div><div class="metric-value">${fmt(saving)}/mo</div><div class="metric-sub">monthly saving</div></div>`:''}
+    <div class="metric"><div class="metric-label">Best 2yr total</div><div class="metric-value">${fmt(Math.min(...all.map(q=>calcTotal2yr(q))))}</div><div class="metric-sub">inc all fees</div></div>
   `;
-  document.getElementById('footer-count').textContent = `${all.length} quote${all.length!==1?'s':''} · Last updated ${new Date().toLocaleDateString('en-GB')}`;
+  document.getElementById('footer-count').textContent = `${all.length} quote${all.length!==1?'s':''} · Updated ${fmtDate(today())}`;
 }
 
 function renderTable() {
   const filtered = getFiltered();
-  const compKey = sortKey === 'total2yr' ? q => calcTotal2yr(q) : q => q[sortKey];
-  filtered.sort((a,b) => {
-    const av = compKey(a), bv = compKey(b);
-    return typeof av === 'string' ? av.localeCompare(bv) * sortDir : (av - bv) * sortDir;
+  const compKey = sortKey==='total2yr' ? q=>calcTotal2yr(q) : q=>q[sortKey];
+  filtered.sort((a,b)=>{
+    const av=compKey(a), bv=compKey(b);
+    return typeof av==='string' ? av.localeCompare(bv)*sortDir : (av-bv)*sortDir;
   });
-
-  ['broker','lender','rate','monthly','fee','total2yr'].forEach(k => {
-    const el = document.getElementById('sort-' + k);
-    if (el) el.textContent = sortKey === k ? (sortDir === 1 ? '↑' : '↓') : '';
+  ['broker','lender','rate','monthly','fee','total2yr'].forEach(k=>{
+    const el=document.getElementById('sort-'+k);
+    if(el) el.textContent=sortKey===k?(sortDir===1?'↑':'↓'):'';
   });
-
   const bestMonthly = filtered.length ? Math.min(...filtered.map(q=>q.monthly)) : 0;
-
   const tbody = document.getElementById('table-body');
   if (!filtered.length) {
-    tbody.innerHTML = '<tr><td colspan="10" class="empty">No quotes match the current filter.</td></tr>';
+    tbody.innerHTML='<tr><td colspan="10" class="empty">No quotes match the current filter.</td></tr>';
   } else {
-    tbody.innerHTML = filtered.map(q => {
-      const isBest = q.monthly === bestMonthly && filtered.length > 0;
-      const statusClass = {Quoted:'badge-quoted',Applied:'badge-applied',Approved:'badge-approved'}[q.status] || 'badge-quoted';
-      return `<tr class="${isBest ? 'best-row' : ''}" onclick="selectDetail(${q.id})">
+    tbody.innerHTML = filtered.map(q=>{
+      const isBest = q.monthly===bestMonthly && filtered.length>0;
+      const sc = {Quoted:'badge-quoted',Applied:'badge-applied',Approved:'badge-approved'}[q.status]||'badge-quoted';
+      const noteCount = (q.notes||[]).length;
+      const docCount = (q.docs||[]).length;
+      return `<tr class="${isBest?'best-row':''}" onclick="selectDetail(${q.id})">
         <td>${q.broker}</td>
-        <td>${q.lender}${isBest ? ' <span class="badge badge-best">Best</span>' : ''}</td>
+        <td>${q.lender}${isBest?' <span class="badge badge-best">Best</span>':''}</td>
         <td><span class="badge ${q.type==='fixed'?'badge-fixed':'badge-variable'}">${q.type}</span></td>
         <td class="mono">${q.rate}%</td>
         <td class="mono">${fmt(q.monthly,2)}</td>
         <td class="mono">${fmt(q.fee||0)}</td>
         <td class="mono">${fmt(calcTotal2yr(q))}</td>
         <td>${q.legals}</td>
-        <td><span class="badge ${statusClass}">${q.status}</span></td>
-        <td>
-          <button class="btn" style="padding:4px 8px;font-size:11px;" onclick="event.stopPropagation();openEdit(${q.id})">Edit</button>
-          <button class="btn btn-danger" style="padding:4px 8px;font-size:11px;margin-left:4px;" onclick="event.stopPropagation();deleteQuote(${q.id})">✕</button>
+        <td><span class="badge ${sc}">${q.status}</span></td>
+        <td style="white-space:nowrap;">
+          ${noteCount?`<span style="font-size:11px;color:var(--muted);margin-right:6px;">📝 ${noteCount}</span>`:''}
+          ${docCount?`<span style="font-size:11px;color:var(--muted);margin-right:6px;">📎 ${docCount}</span>`:''}
+          <button class="btn btn-sm" onclick="event.stopPropagation();openEdit(${q.id})">Edit</button>
+          <button class="btn btn-sm btn-danger" style="margin-left:4px;" onclick="event.stopPropagation();deleteQuote(${q.id})">✕</button>
         </td>
       </tr>`;
     }).join('');
   }
-
   populateDetailSelect(filtered);
   renderMetrics();
 }
 
 function populateDetailSelect(filtered) {
   const sel = document.getElementById('detail-select');
-  const current = sel.value;
-  sel.innerHTML = filtered.map(q => `<option value="${q.id}">${q.lender} — ${q.type} ${q.rate}%</option>`).join('');
-  if (current && filtered.find(q => q.id == current)) sel.value = current;
+  const cur = sel.value;
+  sel.innerHTML = filtered.map(q=>`<option value="${q.id}">${q.lender} — ${q.type} ${q.rate}%</option>`).join('');
+  if (cur && filtered.find(q=>q.id==cur)) sel.value=cur;
   renderDetail();
 }
 
 function selectDetail(id) {
   showTab('detail');
-  document.getElementById('detail-select').value = id;
+  document.getElementById('detail-select').value=id;
   renderDetail();
 }
 
 function renderDetail() {
   const id = parseInt(document.getElementById('detail-select').value);
-  const q = quotes.find(x => x.id === id);
+  const q = data.quotes.find(x=>x.id===id);
   const el = document.getElementById('detail-content');
-  if (!q) { el.innerHTML = '<p style="color:var(--muted);font-size:13px;">No quote selected.</p>'; return; }
+  if (!q) { el.innerHTML='<p style="color:var(--muted);font-size:13px;">No quote selected.</p>'; return; }
+
   const total2yr = calcTotal2yr(q);
-  const totalPeriod = q.monthly * q.period + (q.fee||0) + (q.valuation||0) + (q.transferFee||0) + (q.finalCharge||0);
-  const statusClass = {Quoted:'badge-quoted',Applied:'badge-applied',Approved:'badge-approved'}[q.status] || 'badge-quoted';
+  const totalPeriod = q.monthly*q.period+(q.fee||0)+(q.valuation||0)+(q.transferFee||0)+(q.finalCharge||0);
+  const sc = {Quoted:'badge-quoted',Applied:'badge-applied',Approved:'badge-approved'}[q.status]||'badge-quoted';
+  const notes = q.notes || [];
+  const docs = q.docs || [];
+
+  // Notes HTML
+  const notesHtml = notes.length
+    ? notes.map(n=>`
+        <div class="note-entry">
+          <div class="note-date">${fmtDate(n.date)}</div>
+          <div class="note-text">${escHtml(n.text)}</div>
+          <button class="note-delete" onclick="deleteNote(${q.id},'${n.id}')" title="Delete note">✕</button>
+        </div>`).join('')
+    : '<div class="empty-notes">No notes yet. Add one below.</div>';
+
+  // Docs HTML
+  const docsHtml = docs.length
+    ? docs.map(d=>`
+        <div class="doc-entry">
+          <div class="doc-info">
+            <div class="doc-name">${escHtml(d.name)}</div>
+            <div class="doc-meta">Added ${fmtDate(d.date)}</div>
+          </div>
+          <div class="doc-actions">
+            ${d.url ? `<a class="doc-link" href="${escHtml(d.url)}" target="_blank" rel="noopener">Open ↗</a>` : '<span style="font-size:11px;color:var(--hint);">No link</span>'}
+            <button class="btn btn-sm btn-danger" onclick="deleteDoc(${q.id},'${d.id}')">✕</button>
+          </div>
+        </div>`).join('')
+    : '<div class="empty-notes">No documents linked yet.</div>';
+
   el.innerHTML = `
     <div class="detail-panel">
       <div class="detail-header">
         <div>
           <div class="detail-lender">${q.lender}</div>
-          <div class="detail-broker">via ${q.broker}${q.dateAdded ? ' · Added '+q.dateAdded : ''}</div>
+          <div class="detail-broker">via ${q.broker} · Added ${fmtDate(q.dateAdded)}</div>
         </div>
-        <div style="display:flex;align-items:center;gap:8px;">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           <span class="badge ${q.type==='fixed'?'badge-fixed':'badge-variable'}" style="font-size:12px;padding:4px 12px;">${q.type} · ${q.rate}%</span>
-          <span class="badge ${statusClass}" style="font-size:12px;padding:4px 12px;">${q.status}</span>
+          <span class="badge ${sc}" style="font-size:12px;padding:4px 12px;">${q.status}</span>
         </div>
       </div>
-      <div class="detail-grid">
-        <div>
+
+      <div class="detail-body">
+        <div class="detail-col">
+          <div class="detail-col-title">Repayment</div>
           <div class="detail-row"><span class="detail-key">Monthly payment</span><span class="detail-val">${fmt(q.monthly,2)}</span></div>
           <div class="detail-row"><span class="detail-key">Interest rate</span><span class="detail-val">${q.rate}%</span></div>
           <div class="detail-row"><span class="detail-key">Deal period</span><span class="detail-val">${q.period} months</span></div>
-          <div class="detail-row"><span class="detail-key">Legal arrangement</span><span class="detail-val">${q.legals}</span></div>
+          <div class="detail-row"><span class="detail-key">2yr total cost</span><span class="detail-val">${fmt(total2yr)}</span></div>
+          <div class="detail-row"><span class="detail-key">Full period total</span><span class="detail-val">${fmt(totalPeriod)}</span></div>
           <div class="detail-row"><span class="detail-key">Extra borrowing</span><span class="detail-val">${fmt(q.extraBorrowing||0)}</span></div>
-          <div class="detail-row"><span class="detail-key">Purpose</span><span class="detail-val">${q.purpose||'—'}</span></div>
+          <div class="detail-row"><span class="detail-key">Purpose</span><span class="detail-val" style="font-family:inherit;font-size:12px;">${q.purpose||'—'}</span></div>
         </div>
-        <div>
+        <div class="detail-col">
+          <div class="detail-col-title">Fees</div>
           <div class="detail-row"><span class="detail-key">Lender fee</span><span class="detail-val">${fmt(q.fee||0)}</span></div>
           <div class="detail-row"><span class="detail-key">Valuation fee</span><span class="detail-val">${fmt(q.valuation||0)}</span></div>
           <div class="detail-row"><span class="detail-key">Transfer fee</span><span class="detail-val">${fmt(q.transferFee||0)}</span></div>
           <div class="detail-row"><span class="detail-key">Final repayment charge</span><span class="detail-val">${fmt(q.finalCharge||0)}</span></div>
-          <div class="detail-row"><span class="detail-key">2yr total cost</span><span class="detail-val">${fmt(total2yr)}</span></div>
-          <div class="detail-row"><span class="detail-key">Full deal period total</span><span class="detail-val">${fmt(totalPeriod)}</span></div>
+          <div class="detail-row"><span class="detail-key">Legal arrangement</span><span class="detail-val" style="font-family:inherit;font-size:12px;">${q.legals}</span></div>
         </div>
       </div>
-      ${q.notes ? `<div class="detail-notes">${q.notes}</div>` : ''}
+
+      <div class="notes-section">
+        <div class="notes-title">
+          <span>Notes log</span>
+          <span style="font-size:11px;color:var(--hint);">${notes.length} note${notes.length!==1?'s':''}</span>
+        </div>
+        ${notesHtml}
+        <div class="note-input-row">
+          <textarea id="note-input-${q.id}" placeholder="Add a date-stamped note…"></textarea>
+          <button class="btn btn-primary" onclick="addNote(${q.id})">Add note</button>
+        </div>
+      </div>
+
+      <div class="docs-section">
+        <div class="notes-title">
+          <span>Documents</span>
+          <span style="font-size:11px;color:var(--hint);">${docs.length} linked</span>
+        </div>
+        ${docsHtml}
+        <div class="doc-add-row" style="margin-top:.75rem;">
+          <input id="doc-name-${q.id}" type="text" placeholder="Document name (e.g. ESIS, offer letter)">
+          <input id="doc-url-${q.id}" type="url" placeholder="Google Drive / OneDrive link (optional)">
+          <button class="btn btn-primary" onclick="addDoc(${q.id})">Add</button>
+        </div>
+      </div>
     </div>`;
+}
+
+function addNote(qid) {
+  const inp = document.getElementById('note-input-'+qid);
+  const text = inp.value.trim();
+  if (!text) return;
+  const q = data.quotes.find(x=>x.id===qid);
+  if (!q) return;
+  if (!q.notes) q.notes=[];
+  q.notes.unshift({ id: uid(), date: today(), text });
+  inp.value='';
+  save();
+  renderDetail();
+  showToast('Note added.');
+}
+
+function deleteNote(qid, nid) {
+  const q = data.quotes.find(x=>x.id===qid);
+  if (!q) return;
+  q.notes = (q.notes||[]).filter(n=>n.id!==nid);
+  save();
+  renderDetail();
+  showToast('Note removed.');
+}
+
+function addDoc(qid) {
+  const nameEl = document.getElementById('doc-name-'+qid);
+  const urlEl = document.getElementById('doc-url-'+qid);
+  const name = nameEl.value.trim();
+  if (!name) { showToast('Please enter a document name.'); return; }
+  const q = data.quotes.find(x=>x.id===qid);
+  if (!q) return;
+  if (!q.docs) q.docs=[];
+  q.docs.push({ id: uid(), name, date: today(), url: urlEl.value.trim() });
+  nameEl.value=''; urlEl.value='';
+  save();
+  renderDetail();
+  showToast('Document linked.');
+}
+
+function deleteDoc(qid, did) {
+  const q = data.quotes.find(x=>x.id===qid);
+  if (!q) return;
+  q.docs = (q.docs||[]).filter(d=>d.id!==did);
+  save();
+  renderDetail();
+  showToast('Document removed.');
+}
+
+function escHtml(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function openModal(editId) {
+  editingId = editId||null;
+  document.getElementById('modal-title').textContent = editId?'Edit quote':'Add mortgage quote';
+  const q = editId ? data.quotes.find(x=>x.id===editId) : null;
+  const fields = {
+    'f-broker':q?.broker||'','f-lender':q?.lender||'','f-type':q?.type||'fixed',
+    'f-rate':q?.rate||'','f-monthly':q?.monthly||'','f-period':q?.period||24,
+    'f-fee':q?.fee||'','f-val':q?.valuation||'','f-transfer':q?.transferFee||'',
+    'f-final':q?.finalCharge||'','f-legals':q?.legals||'Fees-assisted',
+    'f-status':q?.status||'Quoted','f-extra':q?.extraBorrowing||'','f-purpose':q?.purpose||''
+  };
+  Object.entries(fields).forEach(([id,val])=>{ const el=document.getElementById(id); if(el) el.value=val; });
+  document.getElementById('modal').classList.add('open');
+}
+
+function openEdit(id) { openModal(id); }
+function closeModal() { document.getElementById('modal').classList.remove('open'); editingId=null; }
+
+function saveQuote() {
+  const rate = parseFloat(document.getElementById('f-rate').value);
+  const monthly = parseFloat(document.getElementById('f-monthly').value);
+  if (!document.getElementById('f-lender').value || isNaN(rate) || isNaN(monthly)) {
+    showToast('Please fill in lender, rate and monthly payment.'); return;
+  }
+  const existing = editingId ? data.quotes.find(x=>x.id===editingId) : null;
+  const q = {
+    id: editingId||nextId++,
+    broker: document.getElementById('f-broker').value||'Unknown',
+    lender: document.getElementById('f-lender').value,
+    type: document.getElementById('f-type').value,
+    rate, monthly,
+    period: parseInt(document.getElementById('f-period').value)||24,
+    fee: parseFloat(document.getElementById('f-fee').value)||0,
+    valuation: parseFloat(document.getElementById('f-val').value)||0,
+    transferFee: parseFloat(document.getElementById('f-transfer').value)||0,
+    finalCharge: parseFloat(document.getElementById('f-final').value)||0,
+    legals: document.getElementById('f-legals').value,
+    status: document.getElementById('f-status').value,
+    extraBorrowing: parseFloat(document.getElementById('f-extra').value)||0,
+    purpose: document.getElementById('f-purpose').value,
+    dateAdded: existing?.dateAdded||today(),
+    notes: existing?.notes||[],
+    docs: existing?.docs||[]
+  };
+  if (editingId) { const idx=data.quotes.findIndex(x=>x.id===editingId); if(idx!==-1) data.quotes[idx]=q; }
+  else data.quotes.push(q);
+  save(); closeModal(); renderTable();
+  showToast(editingId?'Quote updated.':'Quote added.');
+}
+
+function deleteQuote(id) {
+  if (!confirm('Remove this quote?')) return;
+  data.quotes = data.quotes.filter(q=>q.id!==id);
+  save(); renderTable(); showToast('Quote removed.');
+}
+
+function exportCSV() {
+  const headers = ['Broker','Lender','Type','Rate','Monthly','Fee','Valuation','Transfer','FinalCharge','Legals','Period','Status','ExtraBorrowing','Purpose','DateAdded','NoteCount','DocCount'];
+  const rows = data.quotes.map(q=>[
+    q.broker,q.lender,q.type,q.rate,q.monthly,q.fee,q.valuation,q.transferFee,
+    q.finalCharge,q.legals,q.period,q.status,q.extraBorrowing,q.purpose,q.dateAdded,
+    (q.notes||[]).length,(q.docs||[]).length
+  ].map(v=>`"${(v||'').toString().replace(/"/g,'""')}"`).join(','));
+  const csv=[headers.join(','),...rows].join('\n');
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+  a.download='remortgage-quotes-'+today()+'.csv';
+  a.click();
 }
 
 function updateSim() {
@@ -511,158 +694,67 @@ function updateSim() {
   const shift = parseFloat(document.getElementById('sim-rate-shift').value);
   const term = parseInt(document.getElementById('sim-term').value);
   document.getElementById('sim-loan-out').textContent = fmt(loan);
-  document.getElementById('sim-shift-out').textContent = (shift >= 0 ? '+' : '') + shift.toFixed(1) + '%';
-  document.getElementById('sim-term-out').textContent = term + ' yrs';
-
-  const results = quotes.map(q => {
-    const adjRate = Math.max(0.01, q.rate + shift);
-    const monthly = calcMonthly(loan, adjRate, term);
-    const total2yr = monthly * 24 + (q.fee||0) + (q.valuation||0);
-    return { q, adjRate, monthly, total2yr };
+  document.getElementById('sim-shift-out').textContent = (shift>=0?'+':'')+shift.toFixed(1)+'%';
+  document.getElementById('sim-term-out').textContent = term+' yrs';
+  const results = data.quotes.map(q=>{
+    const adjRate=Math.max(0.01,q.rate+shift);
+    const monthly=calcMonthly(loan,adjRate,term);
+    return { q, adjRate, monthly, total2yr:monthly*24+(q.fee||0)+(q.valuation||0) };
   });
-
   const bestMonthly = results.length ? Math.min(...results.map(r=>r.monthly)) : 0;
-  const outsEl = document.getElementById('sim-outputs');
-  outsEl.innerHTML = results.map(r => {
-    const isBest = r.monthly === bestMonthly && results.length > 1;
+  document.getElementById('sim-outputs').innerHTML = results.map(r=>{
+    const isBest = r.monthly===bestMonthly && results.length>1;
     return `<div class="sim-output-card${isBest?' sim-best':''}">
       <div class="sim-output-name">${r.q.lender} (${r.q.type})</div>
-      <div class="sim-output-monthly">${fmt(r.monthly,0)}<span style="font-size:12px;color:var(--hint)">/mo</span></div>
+      <div class="sim-output-monthly">${fmt(r.monthly)}<span style="font-size:12px;color:var(--hint)">/mo</span></div>
       <div class="sim-output-sub">Rate: ${r.adjRate.toFixed(2)}%</div>
       <div class="sim-output-sub">2yr total: ${fmt(r.total2yr)}</div>
     </div>`;
   }).join('');
-
-  const rates = [];
-  for (let r = 2; r <= 7.5; r += 0.5) rates.push(parseFloat(r.toFixed(1)));
-  const colors = ['#2c5282','#92400e','#276749','#be185d','#4338ca'];
-  const dashes = [[],[6,3],[2,4],[8,2],[4,2,2,2]];
-
-  const datasets = quotes.map((q, i) => ({
-    label: `${q.lender} (${q.type})`,
-    data: rates.map(r => Math.round(calcMonthly(loan, r, term))),
-    borderColor: colors[i % colors.length],
-    borderDash: dashes[i % dashes.length],
-    borderWidth: 2, pointRadius: 3, fill: false, tension: 0.3
+  const rates=[];
+  for(let r=2;r<=7.5;r+=0.5) rates.push(parseFloat(r.toFixed(1)));
+  const colors=['#2c5282','#92400e','#276749','#be185d','#4338ca'];
+  const dashes=[[],[6,3],[2,4],[8,2],[4,2,2,2]];
+  const datasets = data.quotes.map((q,i)=>({
+    label:`${q.lender} (${q.type})`,
+    data:rates.map(r=>Math.round(calcMonthly(loan,r,term))),
+    borderColor:colors[i%colors.length], borderDash:dashes[i%dashes.length],
+    borderWidth:2, pointRadius:3, fill:false, tension:0.3
   }));
-
-  const ctx = document.getElementById('sensitivityChart').getContext('2d');
-  if (simChart) simChart.destroy();
-  simChart = new Chart(ctx, {
-    type: 'line',
-    data: { labels: rates.map(r => r.toFixed(1) + '%'), datasets },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: {
-        legend: { display: true, labels: { font: { size: 11, family: 'DM Sans' }, boxWidth: 16, padding: 12 } },
-        tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: £${ctx.parsed.y.toLocaleString()}` } }
+  const ctx=document.getElementById('sensitivityChart').getContext('2d');
+  if(simChart) simChart.destroy();
+  simChart=new Chart(ctx,{
+    type:'line',
+    data:{ labels:rates.map(r=>r.toFixed(1)+'%'), datasets },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{display:true,labels:{font:{size:11,family:'DM Sans'},boxWidth:16,padding:12}},
+        tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: £${ctx.parsed.y.toLocaleString()}`}}
       },
-      scales: {
-        x: { ticks: { font: { size: 11 }, color: '#a8a79f' }, grid: { color: 'rgba(0,0,0,0.05)' } },
-        y: { ticks: { font: { size: 11 }, color: '#a8a79f', callback: v => '£' + v.toLocaleString() }, grid: { color: 'rgba(0,0,0,0.05)' } }
+      scales:{
+        x:{ticks:{font:{size:11},color:'#a8a79f'},grid:{color:'rgba(0,0,0,0.05)'}},
+        y:{ticks:{font:{size:11},color:'#a8a79f',callback:v=>'£'+v.toLocaleString()},grid:{color:'rgba(0,0,0,0.05)'}}
       }
     }
   });
 }
 
 function showTab(name) {
-  ['compare','simulate','detail'].forEach((n, i) => {
-    document.querySelectorAll('.tab')[i].classList.toggle('active', n === name);
-    document.getElementById('tab-' + n).classList.toggle('active', n === name);
+  ['compare','simulate','detail'].forEach((n,i)=>{
+    document.querySelectorAll('.tab')[i].classList.toggle('active',n===name);
+    document.getElementById('tab-'+n).classList.toggle('active',n===name);
   });
-  if (name === 'simulate') setTimeout(updateSim, 50);
-}
-
-function openModal(editId) {
-  editingId = editId || null;
-  document.getElementById('modal-title').textContent = editId ? 'Edit quote' : 'Add mortgage quote';
-  const q = editId ? quotes.find(x => x.id === editId) : null;
-  const fields = {
-    'f-broker': q?.broker||'', 'f-lender': q?.lender||'', 'f-type': q?.type||'fixed',
-    'f-rate': q?.rate||'', 'f-monthly': q?.monthly||'', 'f-period': q?.period||24,
-    'f-fee': q?.fee||'', 'f-val': q?.valuation||'', 'f-transfer': q?.transferFee||'',
-    'f-final': q?.finalCharge||'', 'f-legals': q?.legals||'Fees-assisted',
-    'f-status': q?.status||'Quoted', 'f-extra': q?.extraBorrowing||'',
-    'f-purpose': q?.purpose||'', 'f-notes': q?.notes||''
-  };
-  Object.entries(fields).forEach(([id, val]) => {
-    const el = document.getElementById(id);
-    if (el) { el.tagName === 'SELECT' ? el.value = val : el.value = val; }
-  });
-  document.getElementById('modal').classList.add('open');
-}
-
-function openEdit(id) { openModal(id); }
-function closeModal() { document.getElementById('modal').classList.remove('open'); editingId = null; }
-
-function saveQuote() {
-  const rate = parseFloat(document.getElementById('f-rate').value);
-  const monthly = parseFloat(document.getElementById('f-monthly').value);
-  if (!document.getElementById('f-lender').value || isNaN(rate) || isNaN(monthly)) {
-    showToast('Please fill in lender, rate and monthly payment.');
-    return;
-  }
-  const q = {
-    id: editingId || nextId++,
-    broker: document.getElementById('f-broker').value || 'Unknown',
-    lender: document.getElementById('f-lender').value,
-    type: document.getElementById('f-type').value,
-    rate, monthly,
-    period: parseInt(document.getElementById('f-period').value) || 24,
-    fee: parseFloat(document.getElementById('f-fee').value) || 0,
-    valuation: parseFloat(document.getElementById('f-val').value) || 0,
-    transferFee: parseFloat(document.getElementById('f-transfer').value) || 0,
-    finalCharge: parseFloat(document.getElementById('f-final').value) || 0,
-    legals: document.getElementById('f-legals').value,
-    status: document.getElementById('f-status').value,
-    extraBorrowing: parseFloat(document.getElementById('f-extra').value) || 0,
-    purpose: document.getElementById('f-purpose').value,
-    notes: document.getElementById('f-notes').value,
-    dateAdded: editingId ? (quotes.find(x=>x.id===editingId)?.dateAdded || new Date().toISOString().split('T')[0]) : new Date().toISOString().split('T')[0]
-  };
-  if (editingId) {
-    const idx = quotes.findIndex(x => x.id === editingId);
-    if (idx !== -1) quotes[idx] = q;
-  } else {
-    quotes.push(q);
-  }
-  saveQuotes();
-  closeModal();
-  renderTable();
-  showToast(editingId ? 'Quote updated.' : 'Quote added.');
-}
-
-function deleteQuote(id) {
-  if (!confirm('Remove this quote?')) return;
-  quotes = quotes.filter(q => q.id !== id);
-  saveQuotes();
-  renderTable();
-  showToast('Quote removed.');
-}
-
-function exportCSV() {
-  const headers = ['Broker','Lender','Type','Rate','Monthly','Fee','Valuation','Transfer','FinalCharge','Legals','Period','Status','ExtraBorrowing','Purpose','Notes','DateAdded'];
-  const rows = quotes.map(q => [
-    q.broker,q.lender,q.type,q.rate,q.monthly,q.fee,q.valuation,q.transferFee,q.finalCharge,
-    q.legals,q.period,q.status,q.extraBorrowing,q.purpose,q.notes,q.dateAdded
-  ].map(v => `"${(v||'').toString().replace(/"/g,'""')}"`).join(','));
-  const csv = [headers.join(','), ...rows].join('\n');
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv'}));
-  a.download = 'remortgage-quotes-' + new Date().toISOString().split('T')[0] + '.csv';
-  a.click();
+  if(name==='simulate') setTimeout(updateSim,50);
 }
 
 function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2500);
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
 }
 
-document.getElementById('modal').addEventListener('click', e => {
-  if (e.target === document.getElementById('modal')) closeModal();
-});
+document.getElementById('modal').addEventListener('click',e=>{ if(e.target===document.getElementById('modal')) closeModal(); });
 
 renderTable();
 </script>
